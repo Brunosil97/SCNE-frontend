@@ -1,26 +1,50 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Test from './Test'
+import { Route, withRouter } from 'react-router-dom'
+import AdminLogin from './components/AdminLogin'
+import MusicDashboard from './containers/MusicDashboard'
+import HomeComponent from './components/HomeComponent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(){
+    super()
+    this.state = {
+      adminLoggedIn: false,
+      username: ''
+    }
+  }
+
+  signIn = (admin) => {
+    localStorage.token = admin.token
+    admin.token = undefined
+    this.setState({
+      adminLoggedIn: !this.state.adminLoggedIn,
+      username: admin.username
+    })
+  }
+
+  signOut = () => {
+    this.setState({
+      adminLoggedIn: !this.state.adminLoggedIn,
+      username: ""
+      })
+      localStorage.removeItem("token")
+    }
+   
+  
+
+  render() {
+    return (
+      <div>
+        <Route exact path="/" component={HomeComponent} />
+        <Route exact path="/admin_login" component={(props) => <AdminLogin signIn={this.signIn}{...props}/>}/>
+        <Route exact path="/music" component={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App)
