@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import NavBar from '../Navbar/Navbar'
 import MusicComponent from '../components/MusicComponent'
 import API from '../API'
+import SearchBar from '../components/SearchBar'
 
 class MusicDashboard extends Component {
     state = { 
-        songs: []
+        songs: [],
+        searchFilter: ''
      }
 
      componentDidMount() {
@@ -13,12 +15,26 @@ class MusicDashboard extends Component {
         .then(songs => this.setState({songs: songs}))
      }
 
+    songsFilteredBySearch = () => {
+        const filteredSongs = this.state.searchFilter
+        ? this.state.songs.filter(song => song.title.includes(this.state.searchFilter))
+        : this.state.songs
+        return filteredSongs
+    }
+
+    updateSearchFilter = event => {
+        this.setState({
+            searchFilter: event.target.value
+        })
+    }
+
 
     render() { 
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
-               <MusicComponent songs={this.state.songs}/>
+               <SearchBar updateSearchFilter={this.updateSearchFilter}/>
+               <MusicComponent songs={this.songsFilteredBySearch()}/>
             </div>
          );
     }
