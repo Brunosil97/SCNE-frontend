@@ -14,6 +14,24 @@ const post = (url, data) => {
   }
   return fetch(url, configurationObject)
 }
+const patch = (url, data) => {
+    const configurationObject = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    return fetch(`${baseURL}/${url}`, configurationObject).then((res) =>
+      res.json()
+    );
+  };
+  
+  const getFetch = (url) => {
+    return fetch(`${baseURL}/${url}`).then((res) => res.json());
+  };
+
 const get = (url, token) => {
   return token ? fetch(url, { headers: { AUTHORIZATION: token } }) : fetch(url)
 }
@@ -24,4 +42,4 @@ const signIn = data => {
   return post(signInURL, data).then(response => response.json())
 }
 
-export default { signIn, validate }
+export default { signIn, validate, patch, getFetch}
