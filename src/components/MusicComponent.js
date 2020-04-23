@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import MusicCard from './MusicCard'
+import MusicCard from '../containers/MusicCard'
 
 const MusicComponent = (props) => {
 
     const song = props.songs.map((song, index) => {
-       return <MusicCard key={index}  
-       title={song.title} artist={song.artist} image={song.image_url}/>
+       return <MusicCard key={index} song={song}
+       title={song.title} artist={song.artist} image={song.image_url}
+       spotify={song.spotify} soundcloud={song.soundcloud}/>
     })
 
     return (
