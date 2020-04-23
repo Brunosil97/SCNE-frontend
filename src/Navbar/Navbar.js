@@ -4,14 +4,17 @@ import { NavLink } from "react-router-dom";
 const NavBar = (props) => {
     const signedIn = localStorage.token 
     return (
+        <div>
         <NavLink to="/" exact>
               Home
-        </NavLink>,
+        </NavLink>
         <NavLink to="/music" exact>
             Music
         </NavLink>
-    
-
+        {signedIn ? <NavLink to="/" onClick={() => props.signOut()}exact>
+            SignOut
+        </NavLink> : null} 
+        </div>
     )
 }
 
