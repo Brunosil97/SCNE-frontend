@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavBar from '../Navbar/Navbar'
 import MusicComponent from '../components/MusicComponent'
 import API from '../API'
 import SearchBar from '../components/SearchBar'
 import NewSong from '../containers/NewSong'
 
-class MusicDashboard extends Component {
+class MusicDashboard extends React.PureComponent {
     state = { 
         songs: [],
         searchFilter: ''

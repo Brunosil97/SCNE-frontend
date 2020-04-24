@@ -5,29 +5,35 @@ import { Route, withRouter } from 'react-router-dom'
 import AdminLogin from './components/AdminLogin'
 import MusicDashboard from './containers/MusicDashboard'
 import HomeComponent from './components/HomeComponent'
+import API from './API'
 
 class App extends React.Component {
 
   constructor(){
     super()
     this.state = {
-      adminLoggedIn: false,
       username: ''
     }
   }
 
+  componentDidMount() {
+    if (localStorage.token) {
+      API.validate(localStorage.token)
+        .then( admin => this.signIn(admin))
+    }
+  }
+
   signIn = (admin) => {
+    if (admin.token) {
     localStorage.token = admin.token
-    admin.token = undefined
+    debugger
     this.setState({
-      adminLoggedIn: !this.state.adminLoggedIn,
       username: admin.username
-    })
+    })} 
   }
 
   signOut = () => {
     this.setState({
-      adminLoggedIn: !this.state.adminLoggedIn,
       username: ""
       })
       localStorage.removeItem("token")
