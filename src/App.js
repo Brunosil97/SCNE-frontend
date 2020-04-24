@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Test from './Test'
 import { Route, withRouter } from 'react-router-dom'
 import AdminLogin from './components/AdminLogin'
 import MusicDashboard from './containers/MusicDashboard'

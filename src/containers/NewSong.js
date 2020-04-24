@@ -23,6 +23,7 @@ class NewSong extends Component {
     }
 
     handleSubmit = (event) => {
+        const BASE_URL = "http://localhost:3000"
         event.preventDefault()
         let song = {
             title: this.state.title,
@@ -30,18 +31,19 @@ class NewSong extends Component {
             spotify: this.state.spotify,
             soundcloud: this.state.soundcloud
         }
-        API.post("songs", song).then(data => this.uploadFile(this.state.image, data))
+        API.post(`${BASE_URL}/songs`, song)
+        .then(res => res.json())
+        .then(song => {this.uploadFile(this.state.image, song)})
     }
 
     uploadFile = (file, song) => {
         const BASE_URL = "http://localhost:3000"
         const upload_url = `${BASE_URL}/rails/active_storage/direct_uploads`
         const upload = new DirectUpload(file, upload_url)
-        upload.create((error, blob) => {
+        return upload.create((error, blob) => {
             if (error) {
                 console.log(error)
             } else {
-                debugger
                 fetch(`${BASE_URL}/songs/${song.id}`,{
                     method: "PUT",
                     headers: {
@@ -49,7 +51,7 @@ class NewSong extends Component {
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({image: blob.signed_id})
-                }).then(res => res.json())
+                }).then(res => res.json()).then(data => console.log(data))
             }
         })
     }
