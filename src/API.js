@@ -12,7 +12,7 @@ const post = (url, data) => {
     },
     body: JSON.stringify(data)
   }
-  return fetch(url, configurationObject)
+  return fetch(`${baseURL}/${url}`, configurationObject).then(res => res.json())
 }
 const patch = (url, data) => {
     const configurationObject = {
@@ -42,4 +42,4 @@ const signIn = data => {
   return post(signInURL, data).then(response => response.json())
 }
 
-export default { signIn, validate, patch, getFetch}
+export default { post, signIn, validate, patch, getFetch}

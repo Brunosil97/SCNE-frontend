@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import API from '../API'
+import { DirectUpload } from 'activestorage';
 
 class NewSong extends Component {
     state = { 
@@ -10,14 +12,51 @@ class NewSong extends Component {
      }
 
     newSongInState = event => {
+        if (event.target.name === "image") {
+            this.setState({
+                [event.target.name]: event.target.files[0]
+            })
+        } else {
         this.setState({
             [event.target.name]: event.target.value
+        })}
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        let song = {
+            title: this.state.title,
+            artist: this.state.artist,
+            spotify: this.state.spotify,
+            soundcloud: this.state.soundcloud
+        }
+        API.post("songs", song).then(data => this.uploadFile(this.state.image, data))
+    }
+
+    uploadFile = (file, song) => {
+        const BASE_URL = "http://localhost:3000"
+        const upload_url = `${BASE_URL}/rails/active_storage/direct_uploads`
+        const upload = new DirectUpload(file, upload_url)
+        upload.create((error, blob) => {
+            if (error) {
+                console.log(error)
+            } else {
+                debugger
+                fetch(`${BASE_URL}/songs/${song.id}`,{
+                    method: "PUT",
+                    headers: {
+                        'Content-Type' : 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({image: blob.signed_id})
+                }).then(res => res.json())
+            }
         })
     }
 
     render() { 
         return ( 
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <label>Title:</label>
                 <input type="text" name="title" value={this.state.title} onChange={this.newSongInState}></input>
                 <label>Artist:</label>
