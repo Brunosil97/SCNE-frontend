@@ -3,6 +3,7 @@ import NavBar from '../Navbar/Navbar'
 import MusicComponent from '../components/MusicComponent'
 import API from '../API'
 import SearchBar from '../components/SearchBar'
+import NewSong from '../containers/NewSong'
 
 class MusicDashboard extends Component {
     state = { 
@@ -33,7 +34,7 @@ class MusicDashboard extends Component {
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
-               <SearchBar updateSearchFilter={this.updateSearchFilter}/>
+               {localStorage.token ? <NewSong/> : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
                <MusicComponent songs={this.songsFilteredBySearch()}/>
             </div>
          );

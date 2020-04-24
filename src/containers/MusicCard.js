@@ -22,7 +22,7 @@ class MusicCard extends React.Component {
                 return window.location.href = this.props.soundcloud
                 break;
                 default:
-                    break
+                break
         }
     }
     
@@ -39,7 +39,11 @@ class MusicCard extends React.Component {
                 </img>
                 </div>
                 <button onClick={this.checkClickedStatus}>Streams</button>
-                {this.state.clicked 
+                {localStorage.token 
+                ? <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div> : this.state.clicked 
                 ? <div>
                     {spotify ? <button name="spotify" onClick={() => this.buttonRedirect("spotify")}>Spotify</button> : null}
                     {soundcloud ? <button name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}>Soundcloud</button> : null}
