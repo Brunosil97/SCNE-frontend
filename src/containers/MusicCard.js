@@ -1,4 +1,5 @@
 import React from 'react';
+import API from '../API'
 
 class MusicCard extends React.Component {
 
@@ -10,7 +11,7 @@ class MusicCard extends React.Component {
     }
 
     deleteSong = (song) => {
-        console.log(song)
+        API.deleteFetch(`/songs/${song.id}`)
     }
 
     checkClickedStatus = () => {

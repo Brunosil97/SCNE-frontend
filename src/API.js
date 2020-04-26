@@ -28,18 +28,15 @@ const patch = (url, data) => {
     );
   };
 
-  const deleteFetch = (url, data) => {
+  const deleteFetch = (url) => {
     const configurationObject = {
-      method: "PATCH",
+      method: "DELETE",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json'
+    }
     };
-    return fetch(`${baseURL}/${url}`, configurationObject).then((res) =>
-      res.json()
-    );
+    return fetch(`${baseURL}/${url}`, configurationObject)
   };
   
 const getFetch = (url) => {
