@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom'
 import AdminLogin from './components/AdminLogin'
@@ -24,9 +23,9 @@ class App extends React.Component {
   }
 
   signIn = (admin) => {
+    // debugger
     if (admin.token) {
     localStorage.token = admin.token
-    debugger
     this.setState({
       username: admin.username
     })} 

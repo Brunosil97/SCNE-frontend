@@ -27,10 +27,24 @@ const patch = (url, data) => {
       res.json()
     );
   };
-  
-  const getFetch = (url) => {
-    return fetch(`${baseURL}/${url}`).then((res) => res.json());
+
+  const deleteFetch = (url, data) => {
+    const configurationObject = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    return fetch(`${baseURL}/${url}`, configurationObject).then((res) =>
+      res.json()
+    );
   };
+  
+const getFetch = (url) => {
+  return fetch(`${baseURL}/${url}`).then((res) => res.json());
+};
 
 const get = (url, token) => {
   return token ? fetch(url, { headers: { AUTHORIZATION: token } }) : fetch(url)
@@ -42,4 +56,5 @@ const signIn = data => {
   return post(signInURL, data).then(response => response.json())
 }
 
-export default { post, signIn, validate, patch, getFetch}
+
+export default { post, signIn, validate, patch, getFetch, deleteFetch}

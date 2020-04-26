@@ -6,11 +6,14 @@ import SearchBar from '../components/SearchBar'
 import NewSong from '../containers/NewSong'
 
 class MusicDashboard extends React.PureComponent {
-    state = { 
-        songs: [],
-        searchFilter: ''
-     }
-
+    constructor(){
+        super()
+        this.state = { 
+            songs: [],
+            searchFilter: ''
+         }
+    }
+    
      componentDidMount() {
         API.getFetch("songs")
         .then(songs => this.setState({songs: songs}))
@@ -38,6 +41,10 @@ class MusicDashboard extends React.PureComponent {
                <MusicComponent songs={this.songsFilteredBySearch()}/>
             </div>
          );
+    }
+
+    componentWillUnmount() {
+        this.setState({songs: []})
     }
 }
  
