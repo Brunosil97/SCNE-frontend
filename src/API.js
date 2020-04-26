@@ -36,7 +36,7 @@ const patch = (url, data) => {
         'Accept' : 'application/json'
     }
     };
-    return fetch(`${baseURL}/${url}`, configurationObject)
+    return fetch(`${baseURL}/${url}`, configurationObject).then(res => res.json())
   };
   
 const getFetch = (url) => {

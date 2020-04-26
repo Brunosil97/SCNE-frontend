@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from '../API'
 import { DirectUpload } from 'activestorage';
 
-class NewSong extends Component {
+class SongForm extends Component {
     state = { 
         title: '',
         artist: '',
@@ -75,4 +75,4 @@ class NewSong extends Component {
     }
 }
  
-export default NewSong;
+export default SongForm;

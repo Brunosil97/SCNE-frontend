@@ -3,7 +3,7 @@ import NavBar from '../Navbar/Navbar'
 import MusicComponent from '../components/MusicComponent'
 import API from '../API'
 import SearchBar from '../components/SearchBar'
-import NewSong from '../containers/NewSong'
+import SongForm from '../containers/SongForm'
 
 class MusicDashboard extends React.PureComponent {
     constructor(){
@@ -32,13 +32,18 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
+    deleteSong = (song) => {
+        API.deleteFetch(`/songs/${song.id}`)
+        .then(allsongs => this.setState({songs: allsongs ? allsongs : []}))
+    }
+
 
     render() { 
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
-               {localStorage.token ? <NewSong/> : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               <MusicComponent songs={this.songsFilteredBySearch()}/>
+               {localStorage.token ? <SongForm/> : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
+               <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong}/>
             </div>
          );
     }

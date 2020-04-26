@@ -10,10 +10,6 @@ class MusicCard extends React.Component {
         }
     }
 
-    deleteSong = (song) => {
-        API.deleteFetch(`/songs/${song.id}`)
-    }
-
     checkClickedStatus = () => {
         this.setState({clicked: !this.state.clicked})
     }
@@ -52,7 +48,7 @@ class MusicCard extends React.Component {
                 {localStorage.token 
                 ? <div>
                     <button>Edit</button>
-                    <button onClick={() => this.deleteSong(song)}>Delete</button>
+                    <button onClick={() => this.props.deleteSong(song)}>Delete</button>
                 </div> : null
                 }
             </div>
