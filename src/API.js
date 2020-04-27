@@ -24,7 +24,7 @@ const patch = (url, data) => {
       body: JSON.stringify(data),
     };
     return fetch(`${baseURL}/${url}`, configurationObject).then((res) =>
-      res.json()
+     res.json()
     );
   };
 
