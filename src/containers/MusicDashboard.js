@@ -21,20 +21,13 @@ class MusicDashboard extends React.PureComponent {
         }
     }
 
-    getSongs() {
-        API.getFetch("songs")
-        .then(songs => this.setState({songs: songs}))
-    }
-    
-     componentDidMount() {
+    componentDidMount() {
         this.getSongs()
      }
 
-    songsFilteredBySearch = () => {
-        const filteredSongs = this.state.searchFilter
-        ? this.state.songs.filter(song => song.title.includes(this.state.searchFilter))
-        : this.state.songs
-        return filteredSongs
+    getSongs() {
+        API.getFetch("songs")
+        .then(songs => this.setState({songs: songs}))
     }
 
     updateSearchFilter = event => {
@@ -42,11 +35,17 @@ class MusicDashboard extends React.PureComponent {
             searchFilter: event.target.value
         })
     }
+    
+    songsFilteredBySearch = () => {
+        const filteredSongs = this.state.searchFilter
+        ? this.state.songs.filter(song => song.title.includes(this.state.searchFilter))
+        : this.state.songs
+        return filteredSongs
+    }
 
     deleteSong = (song) => {
         API.deleteFetch(`/songs/${song.id}`)
         .then(() => this.getSongs())
-        // .then(allsongs => this.setState({songs: allsongs ? allsongs : []}))
     }
 
     newSongInState = event => {

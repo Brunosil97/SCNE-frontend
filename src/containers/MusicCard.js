@@ -1,5 +1,4 @@
 import React from 'react';
-import API from '../API'
 
 class MusicCard extends React.Component {
 

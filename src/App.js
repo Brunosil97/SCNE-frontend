@@ -18,25 +18,31 @@ class App extends React.Component {
   componentDidMount() {
     if (localStorage.token) {
       API.validate(localStorage.token)
-        .then( admin => this.signIn(admin))
+        .then( this.handleAuthResponse )
+    }
+  }
+
+  handleAuthResponse = (admin) => {
+    if (!admin.error) {
+      this.signIn(admin)
+      this.props.history.push("/music")
     }
   }
 
   signIn = (admin) => {
-    // debugger
-    if (admin.token) {
     localStorage.token = admin.token
     this.setState({
       username: admin.username
-    })} 
+    })
   }
 
   signOut = () => {
     this.setState({
       username: ""
-      })
-      localStorage.removeItem("token")
-    }
+    })
+
+    localStorage.removeItem("token")
+  }
    
   
 
@@ -44,8 +50,8 @@ class App extends React.Component {
     return (
       <div>
         <Route exact path="/" component={HomeComponent} />
-        <Route exact path="/admin_login" component={(props) => <AdminLogin signIn={this.signIn}{...props}/>}/>
-        <Route exact path="/music" component={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>
+        <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>
+        <Route exact path="/music" render={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>
       </div>
     );
   }
