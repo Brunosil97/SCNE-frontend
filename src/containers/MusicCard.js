@@ -46,7 +46,7 @@ class MusicCard extends React.Component {
                 </div>: null}
                 {localStorage.token 
                 ? <div>
-                    <button>Edit</button>
+                    <button onClick={() => this.props.updateStateToEditSong(song)}>Edit</button>
                     <button onClick={() => this.props.deleteSong(song)}>Delete</button>
                 </div> : null
                 }

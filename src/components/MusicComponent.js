@@ -7,7 +7,7 @@ const MusicComponent = (props) => {
        return <MusicCard key={index} song={song}
        title={song.title} artist={song.artist} image={song.image_url}
        spotify={song.spotify} soundcloud={song.soundcloud} 
-       deleteSong={props.deleteSong}/>
+       deleteSong={props.deleteSong} updateStateToEditSong={props.updateStateToEditSong}/>
     })
 
     return (

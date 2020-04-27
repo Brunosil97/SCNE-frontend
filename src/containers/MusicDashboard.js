@@ -59,6 +59,17 @@ class MusicDashboard extends React.PureComponent {
         })}
     }
 
+    updateStateToEditSong = (song) => {
+        console.log(song)
+        this.setState({
+            title: song.title,
+            artist: song.artist,
+            spotify: song.spotify ? song.spotify : "",
+            soundcloud: song.soundcloud ? song.soundcloud : ""
+
+        })
+    }
+
     handleSubmit = (event) => {
         const BASE_URL = "http://localhost:3000"
         event.preventDefault()
@@ -103,7 +114,8 @@ class MusicDashboard extends React.PureComponent {
                <SongForm handleSubmit={this.handleSubmit} newSongInState={this.newSongInState} 
                title={title} artist={artist} spotify={spotify} soundcloud={soundcloud}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} />
+               <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} 
+               updateStateToEditSong={this.updateStateToEditSong} />
             </div>
          );
     }
