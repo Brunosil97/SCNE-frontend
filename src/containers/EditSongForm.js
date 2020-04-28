@@ -6,7 +6,7 @@ class EditSongForm extends React.Component {
         song: this.props.song,
         title: this.props.song.title,
         artist: this.props.song.artist,
-        image: {},
+        image: null,
         spotify: this.props.song.spotify,
         soundcloud: this.props.song.soundcloud
      }

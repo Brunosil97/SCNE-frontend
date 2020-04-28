@@ -5,7 +5,7 @@ class NewSongForm extends React.Component {
     state = { 
         title: '',
         artist: '',
-        image: {},
+        image: null,
         spotify: '',
         soundcloud: '',
      }
@@ -30,9 +30,13 @@ class NewSongForm extends React.Component {
             spotify: this.state.spotify,
             soundcloud: this.state.soundcloud
         }
-        API.post(`${BASE_URL}/songs`, song)
-        .then(res => res.json())
-        .then(song => {this.props.uploadFile(this.state.image, song.id)})
+        if (this.state.image) {
+            API.post(`${BASE_URL}/songs`, song)
+            .then(res => res.json())
+            .then(song => {this.props.uploadFile(this.state.image, song.id)})
+        } else {
+            alert("No Image Detected")
+        }
     }
 
     render() { 

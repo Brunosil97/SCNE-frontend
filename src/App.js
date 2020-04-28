@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom'
-import AdminLogin from './components/AdminLogin'
+import AdminLogin from './containers/AdminLogin'
 import MusicDashboard from './containers/MusicDashboard'
 import HomeComponent from './components/HomeComponent'
+import AboutComponent from './components/AboutComponent'
 import API from './API'
 
 class App extends React.Component {
@@ -43,13 +44,12 @@ class App extends React.Component {
 
     localStorage.removeItem("token")
   }
-   
-  
 
   render() {
     return (
       <div>
         <Route exact path="/" component={HomeComponent} />
+        <Route exact path="/about" component={AboutComponent}/>
         <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>
         <Route exact path="/music" render={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>
       </div>

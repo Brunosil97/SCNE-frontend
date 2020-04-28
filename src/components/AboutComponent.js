@@ -1,12 +1,12 @@
 import React from 'react';
 import NavBar from '../Navbar/Navbar';
 
-const HomeComponent = (props) => {
+const AboutComponent = (props) => {
     return (
         <div>
-            <NavBar />
+            <NavBar/>
         </div>
     )
 }
 
-export default HomeComponent
+export default AboutComponent
