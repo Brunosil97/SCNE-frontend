@@ -67,9 +67,11 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
-    editSubmit = (event) => {
-        console.log("hi")
-    }
+    // editSubmit = (event) => {
+    //     debugger
+    //     event.preventDefault()
+    //     console.log("hi")
+    // }
 
     handleSubmit = (event) => {
         const BASE_URL = "http://localhost:3000"
@@ -90,7 +92,6 @@ class MusicDashboard extends React.PureComponent {
         const upload_url = `${BASE_URL}/rails/active_storage/direct_uploads`
         const upload = new DirectUpload(file, upload_url)
         return upload.create((error, blob) => {
-            debugger
             if (error) {
                 console.log(error)
             } else {
@@ -116,7 +117,8 @@ class MusicDashboard extends React.PureComponent {
                <SongForm handleSubmit={this.handleSubmit} newSongInState={this.newSongInState} 
                title={title} artist={artist} spotify={spotify} soundcloud={soundcloud}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               {editSong ? <EditSongForm song={selectecSong} newSongInState={this.newSongInState} editSubmit={this.editSubmit}/> : null}
+               {editSong ? <EditSongForm song={selectecSong} newSongInState={this.newSongInState} editSubmit={this.editSubmit}
+               uploadFile={this.uploadFile}/> : null}
                <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} 
                updateStateToEditSong={this.updateStateToEditSong} />
             </div>
