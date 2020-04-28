@@ -3,8 +3,8 @@ import NavBar from '../Navbar/Navbar'
 import MusicComponent from '../components/MusicComponent'
 import API from '../API'
 import SearchBar from '../components/SearchBar'
-import SongForm from '../components/SongForm'
-import EditSongForm from '../components/EditSongForm'
+import NewSongForm from '../containers/NewSongForm'
+import EditSongForm from '../containers/EditSongForm'
 import { DirectUpload } from 'activestorage';
 
 class MusicDashboard extends React.PureComponent {
@@ -13,11 +13,6 @@ class MusicDashboard extends React.PureComponent {
         this.state = { 
             songs: [],
             searchFilter: '',
-                title: '',
-                artist: '',
-                image: {},
-                spotify: '',
-                soundcloud: '',
             selectecSong: [],
             editSong: false
         }
@@ -39,7 +34,7 @@ class MusicDashboard extends React.PureComponent {
     
     songsFilteredBySearch = () => {
         const filteredSongs = this.state.searchFilter
-        ? this.state.songs.filter(song => song.title.includes(this.state.searchFilter))
+        ? this.state.songs.filter(song => song.title.toLowerCase().includes(this.state.searchFilter))
         : this.state.songs
         return filteredSongs
     }
@@ -49,42 +44,11 @@ class MusicDashboard extends React.PureComponent {
         .then(() => this.getSongs())
     }
 
-    newSongInState = event => {
-        if (event.target.name === "image") {
-            this.setState({
-                [event.target.name]: event.target.files[0]
-            })
-        } else {
-        this.setState({
-            [event.target.name]: event.target.value
-        })}
-    }
-
     updateStateToEditSong = (song) => {
         this.setState({
             selectecSong: song,
             editSong: true 
         })
-    }
-
-    // editSubmit = (event) => {
-    //     debugger
-    //     event.preventDefault()
-    //     console.log("hi")
-    // }
-
-    handleSubmit = (event) => {
-        const BASE_URL = "http://localhost:3000"
-        event.preventDefault()
-        let song = {
-            title: this.state.title,
-            artist: this.state.artist,
-            spotify: this.state.spotify,
-            soundcloud: this.state.soundcloud
-        }
-        API.post(`${BASE_URL}/songs`, song)
-        .then(res => res.json())
-        .then(song => {this.uploadFile(this.state.image, song)})
     }
 
     uploadFile = (file, songId) => {
@@ -109,16 +73,14 @@ class MusicDashboard extends React.PureComponent {
     }
 
     render() { 
-        const {title, artist, spotify, soundcloud, editSong, selectecSong} = this.state
+        const {editSong, selectecSong} = this.state
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
                {localStorage.token ? 
-               <SongForm handleSubmit={this.handleSubmit} newSongInState={this.newSongInState} 
-               title={title} artist={artist} spotify={spotify} soundcloud={soundcloud}/> 
+               <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               {editSong ? <EditSongForm song={selectecSong} newSongInState={this.newSongInState} editSubmit={this.editSubmit}
-               uploadFile={this.uploadFile}/> : null}
+               {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile}/> : null}
                <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} 
                updateStateToEditSong={this.updateStateToEditSong} />
             </div>
@@ -127,12 +89,3 @@ class MusicDashboard extends React.PureComponent {
 }
  
 export default MusicDashboard;
-
-
-// TO CREATE SONG
-// upload image
-// create song, w/ image_blob_signed_id
-
-// TO UPDATE SONG
-// upload image, if there is a new image
-// update song, w/ new image if there is one

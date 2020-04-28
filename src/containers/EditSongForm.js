@@ -1,5 +1,3 @@
-
-import { DirectUpload } from 'activestorage';
 import React from 'react';
 import API from '../API';
 
@@ -13,20 +11,7 @@ class EditSongForm extends React.Component {
         soundcloud: this.props.song.soundcloud
      }
 
-    EditSubmit = (event) => {
-        const {song, title, artist, image, spotify, soundcloud} = this.state
-        event.preventDefault()
-        let selectedSong = {
-            title: title,
-            artist: artist,
-            spotify: spotify,
-            soundcloud: soundcloud
-        }
-        API.patch(`update_song/${song.id}`, selectedSong)
-        .then(song => {this.props.uploadFile(this.state.image, song.id)})
-    }
-
-    newSongInState = event => {
+     newSongInState = event => {
         if (event.target.name === "image") {
             this.setState({
                 [event.target.name]: event.target.files[0]
@@ -36,6 +21,19 @@ class EditSongForm extends React.Component {
                 [event.target.name]: event.target.value
             })
         }
+    }
+
+    EditSubmit = (event) => {
+        const {song, title, artist, spotify, soundcloud} = this.state
+        event.preventDefault()
+        let selectedSong = {
+            title: title,
+            artist: artist,
+            spotify: spotify,
+            soundcloud: soundcloud
+        }
+        API.patch(`update_song/${song.id}`, selectedSong)
+        .then(song => {this.props.uploadFile(this.state.image, song.id)})
     }
 
     render() { 
