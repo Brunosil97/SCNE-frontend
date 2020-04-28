@@ -4,6 +4,7 @@ import MusicComponent from '../components/MusicComponent'
 import API from '../API'
 import SearchBar from '../components/SearchBar'
 import SongForm from '../components/SongForm'
+import EditSongForm from '../components/EditSongForm'
 import { DirectUpload } from 'activestorage';
 
 class MusicDashboard extends React.PureComponent {
@@ -17,7 +18,8 @@ class MusicDashboard extends React.PureComponent {
                 image: {},
                 spotify: '',
                 soundcloud: '',
-            selectedSong: []
+            selectecSong: [],
+            editSong: false
         }
     }
     componentDidMount() {
@@ -59,36 +61,28 @@ class MusicDashboard extends React.PureComponent {
     }
 
     updateStateToEditSong = (song) => {
-        const {title, artist, spotify, soundcloud} = song
         this.setState({
-            title: title,
-            artist: artist,
-            spotify: spotify ? spotify : "",
-            soundcloud: soundcloud ? soundcloud : "",
-            selectedSong: song
+            selectecSong: song,
+            editSong: true 
         })
+    }
+
+    editSubmit = (event) => {
+        console.log("hi")
     }
 
     handleSubmit = (event) => {
         const BASE_URL = "http://localhost:3000"
-        const {title, artist, spotify, soundcloud, selectedSong} = this.state
         event.preventDefault()
         let song = {
-            title: title,
-            artist: artist,
-            spotify: spotify,
-            soundcloud: soundcloud
+            title: this.state.title,
+            artist: this.state.artist,
+            spotify: this.state.spotify,
+            soundcloud: this.state.soundcloud
         }
-        if (selectedSong.length === 0) {
-            API.post(`${BASE_URL}/songs`, song)
-            .then(res => res.json())
-            .then(song => this.uploadFile(this.state.image, song.id))
-        } else {
-            API.patch(`songs/${selectedSong["id"]}`, song)
-            // .then(song => {
-            //     this.uploadFile(this.state.image, song.id)
-            // })
-        }
+        API.post(`${BASE_URL}/songs`, song)
+        .then(res => res.json())
+        .then(song => {this.uploadFile(this.state.image, song)})
     }
 
     uploadFile = (file, songId) => {
@@ -114,14 +108,15 @@ class MusicDashboard extends React.PureComponent {
     }
 
     render() { 
-        const {title, artist, spotify, soundcloud} = this.state
+        const {title, artist, spotify, soundcloud, editSong, selectecSong} = this.state
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
                {localStorage.token ? 
                <SongForm handleSubmit={this.handleSubmit} newSongInState={this.newSongInState} 
-               title={title} artist={artist} spotify={spotify} soundcloud={soundcloud} checked={this.state.checked}/> 
+               title={title} artist={artist} spotify={spotify} soundcloud={soundcloud}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
+               {editSong ? <EditSongForm song={selectecSong} newSongInState={this.newSongInState} editSubmit={this.editSubmit}/> : null}
                <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} 
                updateStateToEditSong={this.updateStateToEditSong} />
             </div>
@@ -130,3 +125,12 @@ class MusicDashboard extends React.PureComponent {
 }
  
 export default MusicDashboard;
+
+
+// TO CREATE SONG
+// upload image
+// create song, w/ image_blob_signed_id
+
+// TO UPDATE SONG
+// upload image, if there is a new image
+// update song, w/ new image if there is one
