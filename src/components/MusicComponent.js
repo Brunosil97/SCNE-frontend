@@ -14,6 +14,7 @@ const MusicComponent = (props) => {
        
         <div>
             {song}
+            <button onClick={props.nextFourSongs}>More:</button>
         </div>
     )
 }

@@ -47,7 +47,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="full-background">
         <Route exact path="/" component={HomeComponent} />
         <Route exact path="/about" component={AboutComponent}/>
         <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>

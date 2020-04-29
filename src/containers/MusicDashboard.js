@@ -12,6 +12,7 @@ class MusicDashboard extends React.PureComponent {
         super()
         this.state = { 
             songs: [],
+            displayedSongs: 0,
             searchFilter: '',
             selectecSong: [],
             editSong: false
@@ -31,6 +32,20 @@ class MusicDashboard extends React.PureComponent {
             searchFilter: event.target.value
         })
     }
+
+    showFourSongs = () => {
+        return this.state.songs.slice(this.state.displayedSongs, this.state.displayedSongs + 4)
+      }
+    
+      nextFourSongs = (event) => {
+        let newFourSongs = this.state.displayedSongs + 4
+        if (newFourSongs >= this.state.songs.length) {
+           newFourSongs = 0
+        }
+        return this.setState({
+          displayedSongs: newFourSongs
+        })
+      }
     
     songsFilteredBySearch = () => {
         const filteredSongs = this.state.searchFilter
@@ -81,8 +96,11 @@ class MusicDashboard extends React.PureComponent {
                <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
                {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile}/> : null}
-               <MusicComponent songs={this.songsFilteredBySearch()} deleteSong={this.deleteSong} 
-               updateStateToEditSong={this.updateStateToEditSong} />
+               <MusicComponent 
+               displayedSongs={this.showFourSongs()}
+               songs={this.songsFilteredBySearch()} 
+               deleteSong={this.deleteSong} 
+               updateStateToEditSong={this.updateStateToEditSong} nextFourSongs={this.nextFourSongs} />
             </div>
          );
     }
