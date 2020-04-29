@@ -33,8 +33,8 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
-    showFourSongs = () => {
-        return this.state.songs.slice(this.state.displayedSongs, this.state.displayedSongs + 4)
+    showFourSongs = (songs) => {
+        return songs.slice(this.state.displayedSongs, this.state.displayedSongs + 4)
       }
     
       nextFourSongs = (event) => {
@@ -51,7 +51,7 @@ class MusicDashboard extends React.PureComponent {
         const filteredSongs = this.state.searchFilter
         ? this.state.songs.filter(song => song.title.toLowerCase().includes(this.state.searchFilter))
         : this.state.songs
-        return filteredSongs
+        return this.showFourSongs(filteredSongs)
     }
 
     deleteSong = (song) => {
@@ -97,7 +97,6 @@ class MusicDashboard extends React.PureComponent {
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
                {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile}/> : null}
                <MusicComponent 
-               displayedSongs={this.showFourSongs()}
                songs={this.songsFilteredBySearch()} 
                deleteSong={this.deleteSong} 
                updateStateToEditSong={this.updateStateToEditSong} nextFourSongs={this.nextFourSongs} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './index.css'
 import { Route, withRouter } from 'react-router-dom'
 import AdminLogin from './containers/AdminLogin'
 import MusicDashboard from './containers/MusicDashboard'

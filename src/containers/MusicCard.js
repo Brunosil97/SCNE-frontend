@@ -19,7 +19,7 @@ class MusicCard extends React.Component {
                 window.open(this.props.spotify, '_blank')
                 break;
             case "soundcloud":
-                window.open(this.state.soundcloud, '_blank')
+                window.open(this.props.soundcloud, '_blank')
                 break;
                 default:
                 break
@@ -32,9 +32,9 @@ class MusicCard extends React.Component {
         return ( 
             <div>
                 <div>
-                <h1>
+                <h2>
                     {title}
-                </h1>
+                </h2>
                 <img height="300" width="300" src={`${BASE_URL}/${image}`} alt="">
                 </img>
                 </div>

@@ -11,10 +11,11 @@ const MusicComponent = (props) => {
     })
 
     return (
-       
-        <div>
-            {song}
-            <button onClick={props.nextFourSongs}>More:</button>
+       <div>
+            <div className="create-row">
+                {song}
+            </div>
+                <button onClick={props.nextFourSongs}>More:</button>
         </div>
     )
 }
