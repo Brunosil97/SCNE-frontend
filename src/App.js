@@ -8,6 +8,8 @@ import HomeComponent from './components/HomeComponent'
 import AboutComponent from './components/AboutComponent'
 import API from './API'
 
+import backgroundImage from './duo.png'
+
 class App extends React.Component {
 
   constructor(){
@@ -48,7 +50,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="full-background">
+      <div className="full-background" >
         <Route exact path="/" component={HomeComponent} />
         <Route exact path="/about" component={AboutComponent}/>
         <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>

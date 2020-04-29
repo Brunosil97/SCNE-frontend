@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+/* @import url('https://fonts.googleapis.com/css?family=Inconsolata:700'); */
 
 body {
   margin: 0;
@@ -15,12 +15,22 @@ code {
 }
 
 .full-background {
-  background: no-repeat center/100% url("/scne-frontend/public/images/duo.png");
-}
+  background-image: url("./duo.png");
+  height: 100vh; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 50%;
+} 
 
 .create-row {
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap; 
+}
 
+.video {
+  top: 300px;
+  left: 300px;
+  right: 300px;
 }
