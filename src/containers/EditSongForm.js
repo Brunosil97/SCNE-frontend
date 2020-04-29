@@ -6,7 +6,7 @@ class EditSongForm extends React.Component {
         song: this.props.song,
         title: this.props.song.title,
         artist: this.props.song.artist,
-        image: null,
+        image: {},
         spotify: this.props.song.spotify,
         soundcloud: this.props.song.soundcloud
      }
@@ -34,6 +34,7 @@ class EditSongForm extends React.Component {
         }
         API.patch(`update_song/${song.id}`, selectedSong)
         .then(song => {this.props.uploadFile(this.state.image, song.id)})
+        .then(() => this.props.hideEditForm())
     }
 
     render() { 
@@ -45,7 +46,7 @@ class EditSongForm extends React.Component {
                 <label>Artist:</label>
                 <input type="text" name="artist" value={artist} onChange={this.newSongInState}></input>
                 <label>Image:</label>
-                <input type="file" name="image" onChange={this.newSongInState}></input>
+                <input type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}></input>
                 <label>Spotify</label>
                 <input type="text" name="spotify" value={spotify ? spotify : ""} onChange={this.newSongInState}></input>
                 <label>Soundcloud:</label>

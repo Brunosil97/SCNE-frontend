@@ -1,4 +1,9 @@
 import React from 'react';
+import { Icon, InlineIcon } from '@iconify/react';
+import spotifyIcon from '@iconify/icons-mdi/spotify';
+import soundcloudIcon from '@iconify/icons-logos/soundcloud';
+
+
 
 class MusicCard extends React.Component {
 
@@ -41,8 +46,8 @@ class MusicCard extends React.Component {
                 <button onClick={this.checkClickedStatus}>Streams</button>
                 {this.state.clicked 
                 ? <div>
-                    {spotify ? <button name="spotify" onClick={() => this.buttonRedirect("spotify")}>Spotify</button> : null}
-                    {soundcloud ? <button name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}>Soundcloud</button> : null}
+                    {spotify ? <Icon icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
+                    {soundcloud ? <Icon icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
                 </div>: null}
                 {localStorage.token 
                 ? <div>

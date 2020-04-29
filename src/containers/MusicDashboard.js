@@ -66,6 +66,12 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
+    hideEditForm = () => {
+        this.setState({
+            editSong: false
+        })
+    }
+
     uploadFile = (file, songId) => {
         const BASE_URL = "http://localhost:3000"
         const upload_url = `${BASE_URL}/rails/active_storage/direct_uploads`
@@ -95,7 +101,7 @@ class MusicDashboard extends React.PureComponent {
                {localStorage.token ? 
                <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile}/> : null}
+               {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile} hideEditForm={this.hideEditForm}/> : null}
                <MusicComponent 
                songs={this.songsFilteredBySearch()} 
                deleteSong={this.deleteSong} 

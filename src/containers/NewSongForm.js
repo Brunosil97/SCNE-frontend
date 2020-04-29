@@ -44,15 +44,15 @@ class NewSongForm extends React.Component {
         return ( 
             <form onSubmit={this.handleSubmit}>
                 <label>Title:</label>
-                <input type="text" name="title" value={title} onChange={this.newSongInState}></input>
+                <input type="text" placeholder="title" name="title" value={title} onChange={this.newSongInState}></input>
                 <label>Artist:</label>
-                <input type="text" name="artist" value={artist} onChange={this.newSongInState}></input>
+                <input type="text" placeholder="artist" name="artist" value={artist} onChange={this.newSongInState}></input>
                 <label>Image:</label>
-                <input type="file" name="image" onChange={this.newSongInState}></input>
+                <input type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}></input>
                 <label>Spotify</label>
-                <input type="text" name="spotify" value={spotify} onChange={this.newSongInState}></input>
+                <input type="text"  placeholder="spotify" name="spotify" value={spotify} onChange={this.newSongInState}></input>
                 <label>Soundcloud:</label>
-                <input type="text" name="soundcloud" value={soundcloud} onChange={this.newSongInState}></input>
+                <input type="text" placeholder="soundcloud" name="soundcloud" value={soundcloud} onChange={this.newSongInState}></input>
                 <input type="submit" value="Add Song"></input>
             </form>
          );

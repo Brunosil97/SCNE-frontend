@@ -1,12 +1,16 @@
 import React from 'react';
 
+
 const SearchBar = (props) => {
     return (
-        <div>
-             <input placeholder="search"
+        <div className="search-bar">
+           <input type="text" placeholder="Search..."
             onChange={props.updateSearchFilter}/>
+        <div className="search"></div>
         </div>
     )
 }
 
 export default SearchBar
+
+
