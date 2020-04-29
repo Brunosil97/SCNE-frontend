@@ -9,15 +9,8 @@ class MusicCard extends React.Component {
 
     constructor(){
         super()
-        this.state = {
-            clicked: false
-        }
     }
-
-    checkClickedStatus = () => {
-        this.setState({clicked: !this.state.clicked})
-    }
-
+    
     buttonRedirect = (name) => {
         switch (name) {
             case "spotify":
@@ -43,12 +36,10 @@ class MusicCard extends React.Component {
                 <img height="300" width="300" src={`${BASE_URL}/${image}`} alt="">
                 </img>
                 </div>
-                <button onClick={this.checkClickedStatus}>Streams</button>
-                {this.state.clicked 
-                ? <div>
+                <div className="stream-links">
                     {spotify ? <Icon icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
                     {soundcloud ? <Icon icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
-                </div>: null}
+                </div>
                 {localStorage.token 
                 ? <div>
                     <button onClick={() => this.props.updateStateToEditSong(song)}>Edit</button>
