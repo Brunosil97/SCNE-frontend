@@ -1,5 +1,6 @@
 import React from 'react';
 import MusicCard from '../containers/MusicCard'
+import { ArrowForwardIos, ArrowBackIos } from '@material-ui/icons';
 
 const MusicComponent = (props) => {
 
@@ -15,7 +16,9 @@ const MusicComponent = (props) => {
             <div className="create-row">
                 {song}
             </div>
-                <button onClick={props.nextFourSongs}>More:</button>
+                <ArrowBackIos className="navigate-songs" onClick={props.previousFourSongs}></ArrowBackIos>
+                <ArrowForwardIos className="navigate-songs" onClick={props.nextFourSongs}>More:</ArrowForwardIos>
+
         </div>
     )
 }

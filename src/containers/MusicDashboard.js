@@ -37,7 +37,7 @@ class MusicDashboard extends React.PureComponent {
         return songs.slice(this.state.displayedSongs, this.state.displayedSongs + 4)
       }
     
-      nextFourSongs = (event) => {
+    nextFourSongs = (event) => {
         let newFourSongs = this.state.displayedSongs + 4
         if (newFourSongs >= this.state.songs.length) {
            newFourSongs = 0
@@ -45,7 +45,17 @@ class MusicDashboard extends React.PureComponent {
         return this.setState({
           displayedSongs: newFourSongs
         })
-      }
+    }
+
+    PreviousFourSongs = (event) => {
+        let newFourSongs = this.state.displayedSongs - 4
+        if (newFourSongs <= this.state.songs.length) {
+           newFourSongs = 0
+        }
+        return this.setState({
+          displayedSongs: newFourSongs
+        })
+    }
     
     songsFilteredBySearch = () => {
         const filteredSongs = this.state.searchFilter
@@ -102,11 +112,17 @@ class MusicDashboard extends React.PureComponent {
                {localStorage.token ? 
                <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               {editSong ? <EditSongForm song={selectecSong} uploadFile={this.uploadFile} hideEditForm={this.hideEditForm}/> : null}
+               {editSong 
+               ? <EditSongForm 
+               song={selectecSong} 
+               uploadFile={this.uploadFile} 
+               hideEditForm={this.hideEditForm}/> : null}
                <MusicComponent 
                songs={this.songsFilteredBySearch()} 
                deleteSong={this.deleteSong} 
-               updateStateToEditSong={this.updateStateToEditSong} nextFourSongs={this.nextFourSongs} />
+               updateStateToEditSong={this.updateStateToEditSong} 
+               nextFourSongs={this.nextFourSongs}
+               previousFourSongs={this.PreviousFourSongs} />
             </div>
          );
     }
