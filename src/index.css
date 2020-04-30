@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
@@ -24,14 +25,11 @@ code {
   /* opacity: 50%; */
 } 
 
-.home-logo {
-  background-image: url("./scne_records.png");
-  background-position: center;
-}
-
 .camo-logo {
   position: relative;
-  background-image: url("./scne_camo.fw.png");
+  color: white;
+  height: 400px;
+  left: 350px;
   background-position: center;
 }
 .create-row {
@@ -41,7 +39,7 @@ code {
 }
 
 .video {
-  top: 300px;
+  top: -100px;
   left: 300px;
   right: 300px;
 }
@@ -62,19 +60,15 @@ code {
 }
 
 .navbar-logo {
-  line-height: 60px;
   position: fixed;
   float: left;
   margin: 16px 46px;
   color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 2px;
 }
 
 .navbar {
   position: fixed;
-  left: 700px;
+  left: 800px;
   width: 50%;
   line-height: 60px;
 }
@@ -83,12 +77,12 @@ code {
   font-family: "Helvetica Neue",sans-serif;
   font-weight: lighter;
   display: flex;
+  left: 50px;
   justify-content: space-around;
   line-height: 60px;
   list-style: none;
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
-  color: #fff;
   padding: 0;
   text-align: right;
   margin: 0;
@@ -96,14 +90,23 @@ code {
   transition: 1s;
 }
 
+.navbar-paths a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Bones";
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
 .song-container {
   position: relative;
-  top: 250px;
+  top: -50px;
 }
 
 .search-bar {
   position: relative;
-  top: 250px;
+  top: -50px;
 }
 
 .spotify {
@@ -117,4 +120,9 @@ code {
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+}
+
+.skull {
+  position: relative;
+  height: 50px;
 }

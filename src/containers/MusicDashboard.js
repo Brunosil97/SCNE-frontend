@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import NewSongForm from '../containers/NewSongForm'
 import EditSongForm from '../containers/EditSongForm'
 import { DirectUpload } from 'activestorage';
+import recordLogo from '../scne_records_frame.png'
 
 class MusicDashboard extends React.PureComponent {
     constructor(){
@@ -108,7 +109,7 @@ class MusicDashboard extends React.PureComponent {
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
-               <img className="camo-logo"/>
+               <img className="camo-logo" src={recordLogo}/>
                {localStorage.token ? 
                <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}

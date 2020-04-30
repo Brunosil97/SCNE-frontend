@@ -33,7 +33,7 @@ class MusicCard extends React.Component {
                 <h3 className="song-title">
                     {title}
                 </h3>
-                <img height="300" width="300" src={`${BASE_URL}/${image}`} alt="">
+                <img height="250" width="250" src={`${BASE_URL}/${image}`} alt="">
                 </img>
                 </div>
                 <div className="stream-links">
