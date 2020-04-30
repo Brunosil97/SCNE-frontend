@@ -30,6 +30,7 @@ code {
   color: white;
   height: 400px;
   left: 350px;
+  z-index: 0;
   background-position: center;
 }
 .create-row {
@@ -71,6 +72,7 @@ code {
   left: 800px;
   width: 50%;
   line-height: 60px;
+  z-index: 1;
 }
 
 .navbar-paths {
