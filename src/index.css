@@ -15,14 +15,25 @@ code {
 }
 
 .full-background {
-  background-image: url("./duo.png");
+  /* background-image: url("./duo.png"); */
   height: 100vh; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 50%;
+  background-color: black;
+  /* opacity: 50%; */
 } 
 
+.home-logo {
+  background-image: url("./scne_records.png");
+  background-position: center;
+}
+
+.camo-logo {
+  position: relative;
+  background-image: url("./scne_camo.fw.png");
+  background-position: center;
+}
 .create-row {
   display: flex;
   justify-content: space-around;
@@ -33,4 +44,68 @@ code {
   top: 300px;
   left: 300px;
   right: 300px;
+}
+
+.stream-links {
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Bones';
+  src: url("./BONEAPA.TTF");
+}
+
+.song-title {
+  text-align: center;
+  font-family: "Bones";
+  color: white;
+}
+
+.navbar-logo {
+  line-height: 60px;
+  position: fixed;
+  float: left;
+  margin: 16px 46px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.navbar {
+  position: fixed;
+  left: 700px;
+  width: 50%;
+  line-height: 60px;
+}
+
+.navbar-paths {
+  font-family: "Helvetica Neue",sans-serif;
+  font-weight: lighter;
+  display: flex;
+  justify-content: space-around;
+  line-height: 60px;
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: right;
+  margin: 0;
+  padding-right: 40px;
+  transition: 1s;
+}
+
+.song-container {
+  position: relative;
+  top: 250px;
+}
+
+.search-bar {
+  position: relative;
+  top: 250px;
+}
+
+.spotify {
+  color: green;
 }

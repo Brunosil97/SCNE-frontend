@@ -11,7 +11,7 @@ const MusicComponent = (props) => {
     })
 
     return (
-       <div>
+       <div className="song-container">
             <div className="create-row">
                 {song}
             </div>

@@ -28,17 +28,17 @@ class MusicCard extends React.Component {
         const BASE_URL = "http://localhost:3000"
         const {song, title, image, spotify, soundcloud} = this.props
         return ( 
-            <div>
+            <div className="song-card">
                 <div>
-                <h2>
+                <h3 className="song-title">
                     {title}
-                </h2>
+                </h3>
                 <img height="300" width="300" src={`${BASE_URL}/${image}`} alt="">
                 </img>
                 </div>
                 <div className="stream-links">
-                    {spotify ? <Icon icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
-                    {soundcloud ? <Icon icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
+                    {spotify ? <Icon className="spotify" icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
+                    {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
                 </div>
                 {localStorage.token 
                 ? <div>
