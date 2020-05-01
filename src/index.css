@@ -1,4 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css?family=Inconsolata:700'); */
 
 body {
   margin: 0;
@@ -16,13 +15,12 @@ code {
 }
 
 .full-background {
-  /* background-image: url("./duo.png"); */
+  position: relative;
   height: 100vh; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
-  /* opacity: 50%; */
 } 
 
 .camo-logo {
@@ -34,18 +32,21 @@ code {
   background-position: center;
 }
 .create-row {
+  position: relative;
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap; 
 }
 
 .video {
+  position: relative;
   top: -65px;
   left: 300px;
   right: 300px;
 }
 
 .stream-links {
+  position: relative;
   text-align: center;
 }
 
@@ -55,12 +56,14 @@ code {
 }
 
 .song-title {
+  position: relative;
   text-align: center;
   font-family: "Bones";
   color: white;
 }
 
 .navbar-logo {
+  position: relative;
   position: fixed;
   float: left;
   margin: 16px 46px;
@@ -68,6 +71,7 @@ code {
 }
 
 .navbar {
+  position: relative;
   position: fixed;
   left: 800px;
   width: 50%;
@@ -76,10 +80,11 @@ code {
 }
 
 .navbar-paths {
+  position: relative;
   font-family: "Helvetica Neue",sans-serif;
   font-weight: lighter;
   display: flex;
-  left: 50px;
+  left: -50px;
   justify-content: space-around;
   line-height: 60px;
   list-style: none;
@@ -93,6 +98,7 @@ code {
 }
 
 .navbar-paths a {
+  position: relative;
   text-decoration: none;
   color: #fff;
   font-family: "Bones";
@@ -106,9 +112,9 @@ code {
   top: -50px;
 }
 
-.search-bar {
-  position: relative;
-  top: -50px;
+.song-card:hover{
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.1);
 }
 
 .contact-links div {
@@ -123,6 +129,7 @@ code {
 }
 
 .socials:hover {
+  position: relative;
   transition: all .2s ease-in-out;
   transform: scale(1.5);
 }
@@ -151,6 +158,7 @@ code {
 }
 
 .new-form {
+  position: relative;
   color: #fff;
   font-family: "Bones";
   z-index: 2;
@@ -158,6 +166,7 @@ code {
   top: -100px;
 }
 .edit-form {
+  position: relative;
   color: #fff;
   font-family: "Bones";
   z-index: 2;
