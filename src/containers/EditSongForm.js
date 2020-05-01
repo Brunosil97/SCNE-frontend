@@ -40,7 +40,7 @@ class EditSongForm extends React.Component {
     render() { 
         const {title, artist, spotify, soundcloud} = this.state
         return ( 
-            <form onSubmit={this.EditSubmit}>
+            <form className="edit-form" onSubmit={this.EditSubmit}>
                 <label>Title:</label>
                 <input type="text" name="title" value={title} onChange={this.newSongInState}></input>
                 <label>Artist:</label>

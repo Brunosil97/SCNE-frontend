@@ -109,7 +109,7 @@ class MusicDashboard extends React.PureComponent {
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
-               <img className="camo-logo" src={recordLogo}/>
+               <img className="camo-logo" src={recordLogo} alt=""/>
                {localStorage.token ? 
                <NewSongForm uploadFile={this.uploadFile}/> 
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}

@@ -8,8 +8,6 @@ import HomeComponent from './components/HomeComponent'
 import AboutComponent from './components/AboutComponent'
 import API from './API'
 
-import backgroundImage from './duo.png'
-
 class App extends React.Component {
 
   constructor(){

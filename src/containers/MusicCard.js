@@ -1,15 +1,11 @@
 import React from 'react';
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon} from '@iconify/react';
 import spotifyIcon from '@iconify/icons-mdi/spotify';
 import soundcloudIcon from '@iconify/icons-logos/soundcloud';
 
 
 
 class MusicCard extends React.Component {
-
-    constructor(){
-        super()
-    }
     
     buttonRedirect = (name) => {
         switch (name) {

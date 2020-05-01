@@ -40,7 +40,7 @@ code {
 }
 
 .video {
-  top: -100px;
+  top: -65px;
   left: 300px;
   right: 300px;
 }
@@ -115,6 +115,10 @@ code {
   color: green;
 }
 
+.instagram {
+  color: white;
+}
+
 .navigate-songs {
   position: relative;
   left: 685px;
@@ -127,4 +131,19 @@ code {
 .skull {
   position: relative;
   height: 50px;
+}
+
+.new-form {
+  color: #fff;
+  font-family: "Bones";
+  z-index: 2;
+  position: relative;
+  top: -100px;
+}
+.edit-form {
+  color: #fff;
+  font-family: "Bones";
+  z-index: 2;
+  position: relative;
+  top: -75px;
 }

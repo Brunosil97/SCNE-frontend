@@ -1,6 +1,7 @@
 import React from 'react';
 import API from '../API';
 
+
 class NewSongForm extends React.Component {
     state = { 
         title: '',
@@ -42,7 +43,7 @@ class NewSongForm extends React.Component {
     render() { 
         const {title, artist, spotify, soundcloud} = this.state
         return ( 
-            <form onSubmit={this.handleSubmit}>
+            <form className="new-form"onSubmit={this.handleSubmit}>
                 <label>Title:</label>
                 <input type="text" placeholder="title" name="title" value={title} onChange={this.newSongInState}></input>
                 <label>Artist:</label>
