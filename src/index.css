@@ -111,11 +111,28 @@ code {
   top: -50px;
 }
 
+.contact-links div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+  top: -80px;
+  left: 10px;
+  size: 100px;
+}
+
+.socials:hover {
+  transition: all .2s ease-in-out;
+  transform: scale(1.5);
+}
+
 .spotify {
   color: green;
 }
 
 .instagram {
+  background-color: thistle;
   color: white;
 }
 
