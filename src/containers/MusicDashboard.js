@@ -90,12 +90,6 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
-    // hideNewForm = () => {
-    //     this.setState({
-    //         newSong: !this.state.newSong
-    //     })
-    // }
-
     uploadFile = (file, songId) => {
         const BASE_URL = "http://localhost:3000"
         const upload_url = `${BASE_URL}/rails/active_storage/direct_uploads`
@@ -126,7 +120,7 @@ class MusicDashboard extends React.PureComponent {
 
                {localStorage.token ? null
                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               
+
                {newSong ? <NewSongForm 
                uploadFile={this.uploadFile}
                changeSongFormState={this.changeSongFormState}/>: null}

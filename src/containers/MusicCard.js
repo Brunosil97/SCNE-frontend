@@ -33,9 +33,13 @@ class MusicCard extends React.Component {
                 <img height="250" width="250" src={`${BASE_URL}/${image}`} alt="">
                 </img>
                 </div>
-                <div className="stream-links">
+                <div id="stream-links">
+                    <div className="stream-link">
                     {spotify ? <Icon className="spotify" icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
                     {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
+                    </div>
+                    {/* {spotify ? <Icon className="spotify" icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
+                    {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null} */}
                 </div>
                 {localStorage.token 
                 ? <div id="button-container">

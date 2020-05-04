@@ -13,7 +13,8 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      username: ''
+      username: '',
+      youtube: "https://www.youtube.com/embed/TNIfvaars80"
     }
   }
 
@@ -34,7 +35,7 @@ class App extends React.Component {
   signIn = (admin) => {
     localStorage.token = admin.token
     this.setState({
-      username: admin.username
+      username: admin.username,
     })
   }
 
@@ -69,7 +70,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="full-background" >
-        <Route exact path="/" render={(props) => <HomeComponent homeNavigation={this.homeNavigation} {...props}/>} />
+        <Route exact path="/" render={(props) => <HomeComponent homeNavigation={this.homeNavigation} youtubeVid={this.state.youtube}{...props}/>} />
         <Route exact path="/about" component={AboutComponent}/>
         <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>
         <Route exact path="/music" render={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>

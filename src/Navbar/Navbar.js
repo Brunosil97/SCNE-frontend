@@ -21,7 +21,7 @@ const NavBar = (props) => {
                 <NavLink to="/about" exact>
                 About
                 </NavLink>
-                {signedIn ? <NavLink to="/" onClick={() => props.signOut()}exact>
+                {signedIn ? <NavLink to="/" onClick={() => {props.signOut()}}exact>
                 SignOut
                 </NavLink> : null} 
                 </div>

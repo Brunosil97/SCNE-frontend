@@ -7,6 +7,7 @@ import spotifyIcon from '@iconify/icons-mdi/spotify';
 import soundcloudIcon from '@iconify/icons-logos/soundcloud';
 import youtubeIcon from '@iconify/icons-logos/youtube';
 import instagramIcon from '@iconify/icons-logos/instagram-icon';
+import { Button, Divider, Form } from 'semantic-ui-react'
 
 const HomeComponent = (props) => {
     return (
@@ -14,6 +15,15 @@ const HomeComponent = (props) => {
              <div>
             <NavBar />
             <img className="camo-logo" src={recordLogo} alt=""/>
+            {/* {localStorage. token ? 
+            <Form id="youtube-form">
+                <Form.Group className="inputs" >
+                    <Form.Field type="text" control='input' onChange={props.changeHomeVideo}/>
+                    <Button className="youtube-button" type='submit'>Change Video</Button>
+                </Form.Group>
+                <Divider hidden/>
+            </Form>
+            : */}
             <div>
                 <div className="contact-links">
                     <div className="socials">
@@ -23,9 +33,9 @@ const HomeComponent = (props) => {
                     <Icon className="instagram" icon={instagramIcon} onClick={() => props.homeNavigation("instagram")}/> 
                     </div>
                 </div>
-            </div>
+            </div> }
             <Iframe className="video" width="853" height="480" position="relative" 
-            src="https://www.youtube.com/embed/TNIfvaars80" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
+            src={props.youtubeVid} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
         </div>
         </main>
     )

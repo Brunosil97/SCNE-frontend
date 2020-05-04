@@ -13,6 +13,7 @@ $black: #202121;
     display: flex;
     flex-direction: row;
     top: 300px;
+    left: 15px;
     background: #282C2F;
     color: #ccc;
     padding: 0 0.25rem;
@@ -24,9 +25,9 @@ $black: #202121;
   
     .icon {
       fill: currentColor;
-      padding: 0.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
+      padding: 0.25rem;
+      width: 2rem;
+      height: 2rem;
     }
   
     input {
@@ -79,7 +80,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(32,32,32) */
+  background-color:	rgb(24,24,24)
+
 }
 
 code {
@@ -121,9 +123,15 @@ code {
   right: 300px;
 }
 
-.stream-links {
+#stream-links {
   position: relative;
   text-align: center;
+  padding: 1rem;
+}
+
+.stream-link:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(2);
 }
 
 @font-face {
@@ -252,7 +260,8 @@ top: 350px;
 left: 500px;
 }
 
-.admin-button {
+#youtube-form {
   position: relative;
-  
+  top: -75px;
+  left:575px;
 }
