@@ -233,18 +233,14 @@ code {
   height: 50px;
 }
 
-.new-form {
+#new-form {
   position: relative;
-  color: #fff;
-  font-family: "Bones";
   z-index: 2;
   position: relative;
-  top: -100px;
+  top: -75px;
+  left: 55px;
 }
 .edit-form {
-  position: relative;
-  color: #fff;
-  font-family: "Bones";
   z-index: 2;
   position: relative;
   top: -75px;

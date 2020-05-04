@@ -1,6 +1,6 @@
 import React from 'react';
 import API from '../API';
-
+import { Button, Header, Modal, Form} from 'semantic-ui-react'
 
 class NewSongForm extends React.Component {
     state = { 
@@ -35,6 +35,7 @@ class NewSongForm extends React.Component {
             API.post(`${BASE_URL}/songs`, song)
             .then(res => res.json())
             .then(song => {this.props.uploadFile(this.state.image, song.id)})
+            .then(() => this.props.hideNewForm())
         } else {
             alert("No Image Detected")
         }
@@ -43,19 +44,19 @@ class NewSongForm extends React.Component {
     render() { 
         const {title, artist, spotify, soundcloud} = this.state
         return ( 
-            <form className="new-form"onSubmit={this.handleSubmit}>
-                <label>Title:</label>
-                <input type="text" placeholder="title" name="title" value={title} onChange={this.newSongInState}></input>
-                <label>Artist:</label>
-                <input type="text" placeholder="artist" name="artist" value={artist} onChange={this.newSongInState}></input>
-                <label>Image:</label>
-                <input type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}></input>
-                <label>Spotify</label>
-                <input type="text"  placeholder="spotify" name="spotify" value={spotify} onChange={this.newSongInState}></input>
-                <label>Soundcloud:</label>
-                <input type="text" placeholder="soundcloud" name="soundcloud" value={soundcloud} onChange={this.newSongInState}></input>
-                <input type="submit" value="Add Song"></input>
-            </form>
+            <Modal as={Form} open={true} onSubmit={this.handleSubmit}>
+                <Header icon='archive' content='Add A New Song' size="tiny"/>
+                <Modal.Content>
+                    <Form.Input label="Title:" type="text" name="title" value={title} onChange={this.newSongInState}/>
+                    <Form.Input label="Artist:" type="text" name="artist" value={artist} onChange={this.newSongInState}/>
+                    <Form.Input label="Image:" type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}/>
+                    <Form.Input label="Spotify:" type="text" name="spotify" value={spotify ? spotify : ""} onChange={this.newSongInState}/>
+                    <Form.Input label="Soundcloud:" type="text" name="soundcloud" value={soundcloud ? soundcloud : ""} onChange={this.newSongInState}/>
+                </Modal.Content>
+                <Modal.Actions>
+                <Button type="submit" color="green" icon="save" content="Save" />
+                </Modal.Actions>
+            </Modal>
          );
     }
 }

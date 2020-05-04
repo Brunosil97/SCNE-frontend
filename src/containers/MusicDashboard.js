@@ -16,7 +16,8 @@ class MusicDashboard extends React.PureComponent {
             displayedSongs: 0,
             searchFilter: '',
             selectecSong: [],
-            editSong: false
+            editSong: false,
+            newSong: false
         }
     }
     componentDidMount() {
@@ -73,13 +74,25 @@ class MusicDashboard extends React.PureComponent {
     updateStateToEditSong = (song) => {
         this.setState({
             selectecSong: song,
-            editSong: true 
+            editSong: !this.state.editSong
         })
     }
 
     hideEditForm = () => {
         this.setState({
-            editSong: false
+            editSong: !this.state.editSong
+        })
+    }
+
+    newSongForm = () => {
+        this.setState({
+            newSong: !this.state.newSong
+        })
+    }
+
+    hideNewForm = () => {
+        this.setState({
+            newSong: !this.state.newSong
         })
     }
 
@@ -105,19 +118,31 @@ class MusicDashboard extends React.PureComponent {
     }
 
     render() { 
-        const {editSong, selectecSong} = this.state
+        const {newSong, editSong, selectecSong} = this.state
         return ( 
             <div>
                <NavBar signOut={this.props.signOut}/>
                <img className="camo-logo" src={recordLogo} alt=""/>
+
                {localStorage.token ? 
-               <NewSongForm uploadFile={this.uploadFile}/> 
-               : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
-               {editSong 
-               ? <EditSongForm 
+                // <NewSongForm uploadFile={this.uploadFile}/> 
+                null
+                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
+               {newSong ? <NewSongForm 
+               uploadFile={this.uploadFile}
+               hideNewForm={this.hideNewForm}/>: null}
+
+               {editSong ? <EditSongForm 
+               editSong={this.state.editSong}
                song={selectecSong} 
                uploadFile={this.uploadFile} 
                hideEditForm={this.hideEditForm}/> : null}
+
+               {localStorage.token ?
+               <div id="new-form">
+               <button className="button" onClick={this.newSongForm}>Add Song</button>
+               </div> : null}
+
                <MusicComponent 
                songs={this.songsFilteredBySearch()} 
                deleteSong={this.deleteSong} 
