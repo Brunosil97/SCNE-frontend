@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import '../index.scss'
 import API from '../API'
+import { Button, Divider, Form } from 'semantic-ui-react'
 
 class AdminLogin extends Component {
     state = { 
@@ -29,11 +31,24 @@ class AdminLogin extends Component {
 
     render() { 
         return ( 
-            <form onSubmit={this.handleSubmit}>
-            <input type="text" name="name" onChange={(event) => this.userTyping("name",event)}></input><br/>
-             <input type="password" name="password" onChange={(event) => this.userTyping("password",event)}/><br/>
-             <input type="submit" value="Sign In"/>
-            </form>
+            <div>
+                <Form id="admin-form" onSubmit={this.handleSubmit}>
+                    <Form.Group className="inputs" >
+                    <Form.Field
+                        type="text"
+                        control='input'
+                        onChange={(event) => this.userTyping("name",event)}
+                    />
+                    <Form.Field
+                        type="password"
+                        control='input'
+                        onChange={(event) => this.userTyping("password",event)}
+                    />
+                    </Form.Group>
+                <Button className="admin-button" type='submit'>SCNE</Button>
+                <Divider hidden/>
+                </Form>
+            </div>
          );
     }
 }

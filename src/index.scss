@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:900');
+
+$bg: #3c3c3c;
+$white: #fff;
+$black: #202121;
+
+@mixin transition($property: all, $duration: 0.5s, $ease: cubic-bezier(0.65,-0.25,0.25, 1.95)) {
+  transition: $property $duration $ease;
+}
+
 .search {
     position: absolute;
     display: flex;
@@ -7,10 +17,6 @@
     color: #ccc;
     padding: 0 0.25rem;
     border-radius: 2rem;
-  
-    &:hover {
-    //   background: #e8e8e8;
-    }
   
     &:focus-within {
       background: #1d2022;
@@ -32,4 +38,225 @@
       outline: none;
       font-size: 1rem;
     }
+}
+
+  button{
+      position: relative;
+      display: inline-block;
+      justify-content: space-between;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      vertical-align: middle;
+      text-decoration: none;
+      font-size: inherit;
+      font-family: 'Bones';
+    &.button {
+        @include transition(all, 0.5s, cubic-bezier(0.65,-0.25,0.25,1.95));
+        font-weight: 900;
+        color: $black;
+        padding: 0.5rem 1rem;
+        background: $white;
+        text-transform: uppercase;
+      &:hover, &:focus, &:active {
+          letter-spacing: 0.125rem;
+      }
+    }
+  }
+
+    * {
+      box-sizing: border-box;
+      &::before, &::after {
+        box-sizing: border-box;
+      }
+   }
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(32,32,32) */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.full-background {
+  position: relative;
+  height: 100vh; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color:	rgb(24,24,24)
+} 
+
+.camo-logo {
+  position: relative;
+  color: white;
+  height: 400px;
+  left: 350px;
+  /* height: 45vh;
+  max-height: 150px;
+  min-height: 50px; */
+  z-index: 0;
+  background-position: center;
+}
+.create-row {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap; 
+}
+
+.video {
+  position: relative;
+  top: -65px;
+  left: 300px;
+  right: 300px;
+}
+
+.stream-links {
+  position: relative;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Bones';
+  src: url("./BONEAPA.TTF");
+}
+
+.song-title {
+  position: relative;
+  text-align: center;
+  font-family: "Bones";
+  color: white;
+}
+
+.navbar-logo {
+  position: relative;
+  position: fixed;
+  float: left;
+  margin: 16px 46px;
+  color: #fff;
+}
+
+.navbar {
+  position: relative;
+  position: fixed;
+  left: 800px;
+  width: 50%;
+  line-height: 60px;
+  z-index: 1;
+}
+
+.navbar-paths {
+  position: relative;
+  font-family: "Helvetica Neue",sans-serif;
+  font-weight: lighter;
+  display: flex;
+  left: -50px;
+  justify-content: space-around;
+  line-height: 60px;
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  padding: 0;
+  text-align: right;
+  margin: 0;
+  padding-right: 40px;
+  transition: 1s;
+}
+
+.navbar-paths a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Bones";
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.song-container {
+  position: relative;
+  top: -50px;
+}
+
+.song-card:hover{
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.1);
+}
+
+.contact-links div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+  top: -80px;
+  left: 10px;
+  size: 100px;
+}
+
+.socials:hover {
+  position: relative;
+  transition: all .2s ease-in-out;
+  transform: scale(1.5);
+}
+
+.spotify {
+  color: green;
+}
+
+.instagram {
+  background-color: thistle;
+  color: white;
+}
+
+.navigate-songs {
+  position: relative;
+  left: 690px;
+  color: white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.skull {
+  position: relative;
+  height: 50px;
+}
+
+.new-form {
+  position: relative;
+  color: #fff;
+  font-family: "Bones";
+  z-index: 2;
+  position: relative;
+  top: -100px;
+}
+.edit-form {
+  position: relative;
+  color: #fff;
+  font-family: "Bones";
+  z-index: 2;
+  position: relative;
+  top: -75px;
+}
+
+#admin-form {
+position: relative;
+top: 350px;
+left: 500px;
+}
+
+.admin-button {
+  position: relative;
+  
 }

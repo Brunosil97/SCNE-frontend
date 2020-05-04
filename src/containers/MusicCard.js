@@ -1,4 +1,5 @@
 import React from 'react';
+import '../index.scss'
 import { Icon} from '@iconify/react';
 import spotifyIcon from '@iconify/icons-mdi/spotify';
 import soundcloudIcon from '@iconify/icons-logos/soundcloud';
@@ -37,9 +38,9 @@ class MusicCard extends React.Component {
                     {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
                 </div>
                 {localStorage.token 
-                ? <div>
-                    <button onClick={() => this.props.updateStateToEditSong(song)}>Edit</button>
-                    <button onClick={() => this.props.deleteSong(song)}>Delete</button>
+                ? <div id="button-container">
+                    <button className="button" onClick={() => this.props.updateStateToEditSong(song)}>Edit</button>
+                    <button className="button" onClick={() => this.props.deleteSong(song)}>Delete</button>
                 </div> : null
                 }
             </div>

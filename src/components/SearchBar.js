@@ -1,15 +1,8 @@
 import React from 'react';
 import '../index.scss'
 
-
 const SearchBar = (props) => {
     return (
-        // <div className="search-bar">
-        //    <input type="text" placeholder="Search..."
-        //     onChange={props.updateSearchFilter}/>
-        // <div className="search"></div>
-        // </div>
-
         <div className="search">
             <svg
             className="icon"
