@@ -84,17 +84,17 @@ class MusicDashboard extends React.PureComponent {
         })
     }
 
-    newSongForm = () => {
+    changeSongFormState = () => {
         this.setState({
             newSong: !this.state.newSong
         })
     }
 
-    hideNewForm = () => {
-        this.setState({
-            newSong: !this.state.newSong
-        })
-    }
+    // hideNewForm = () => {
+    //     this.setState({
+    //         newSong: !this.state.newSong
+    //     })
+    // }
 
     uploadFile = (file, songId) => {
         const BASE_URL = "http://localhost:3000"
@@ -124,13 +124,12 @@ class MusicDashboard extends React.PureComponent {
                <NavBar signOut={this.props.signOut}/>
                <img className="camo-logo" src={recordLogo} alt=""/>
 
-               {localStorage.token ? 
-                // <NewSongForm uploadFile={this.uploadFile}/> 
-                null
-                : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
+               {localStorage.token ? null
+               : <SearchBar updateSearchFilter={this.updateSearchFilter} />}
+               
                {newSong ? <NewSongForm 
                uploadFile={this.uploadFile}
-               hideNewForm={this.hideNewForm}/>: null}
+               changeSongFormState={this.changeSongFormState}/>: null}
 
                {editSong ? <EditSongForm 
                editSong={this.state.editSong}
@@ -140,7 +139,7 @@ class MusicDashboard extends React.PureComponent {
 
                {localStorage.token ?
                <div id="new-form">
-               <button className="button" onClick={this.newSongForm}>Add Song</button>
+               <button className="button" onClick={this.changeSongFormState}>Add Song</button>
                </div> : null}
 
                <MusicComponent 

@@ -35,7 +35,7 @@ class NewSongForm extends React.Component {
             API.post(`${BASE_URL}/songs`, song)
             .then(res => res.json())
             .then(song => {this.props.uploadFile(this.state.image, song.id)})
-            .then(() => this.props.hideNewForm())
+            .then(() => this.props.changeSongFormState())
         } else {
             alert("No Image Detected")
         }
