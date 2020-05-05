@@ -4,7 +4,7 @@ import NavBar from '../Navbar/Navbar';
 const AboutComponent = (props) => {
     return (
         <div>
-            <NavBar/>
+            {/* <NavBar/> */}
         </div>
     )
 }

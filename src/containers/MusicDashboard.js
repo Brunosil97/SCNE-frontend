@@ -115,7 +115,7 @@ class MusicDashboard extends React.PureComponent {
         const {newSong, editSong, selectecSong} = this.state
         return ( 
             <div>
-               <NavBar signOut={this.props.signOut}/>
+            
                <img className="camo-logo" src={recordLogo} alt=""/>
 
                {localStorage.token ? null
