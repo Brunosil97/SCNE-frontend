@@ -75,7 +75,7 @@ class HomeComponent extends React.Component {
                 :
                 <div>
                     <div className="contact-links">
-                        <div className="socials">
+                        <div id="socials">
                         <Icon className="Youtube" icon={youtubeIcon} onClick={() => this.homeNavigation("youtube")}/>
                         <Icon className="spotify" icon={spotifyIcon} onClick={() => this.homeNavigation("spotify")}/> 
                         <Icon className="soundcloud" icon={soundcloudIcon} onClick={() => this.homeNavigation("soundcloud")}/> 

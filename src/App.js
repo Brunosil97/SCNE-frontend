@@ -28,7 +28,7 @@ class App extends React.Component {
   handleAuthResponse = (admin) => {
     if (!admin.error) {
       this.signIn(admin)
-      this.props.history.push("/music")
+      // this.props.history.push("/music")
     }
   }
 
@@ -37,6 +37,7 @@ class App extends React.Component {
     this.setState({
       username: admin.username,
     })
+    this.props.history.push("/music")
   }
 
   signOut = () => {

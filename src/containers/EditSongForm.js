@@ -40,7 +40,7 @@ class EditSongForm extends React.Component {
     render() { 
         const {title, artist, spotify, soundcloud} = this.state
         return ( 
-            <Modal as={Form} open={true} onSubmit={this.EditSubmit}>
+            <Modal as={Form} open={true} onSubmit={this.EditSubmit} onClose={() => this.props.hideEditForm()} closeIcon>
                   <Header icon='archive' content='Edit Song' size="tiny"/>
                   <Modal.Content>
                     <Form.Input label="Title:" type="text" name="title" value={title} onChange={this.newSongInState}/>

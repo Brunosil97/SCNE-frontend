@@ -103,9 +103,6 @@ code {
   color: white;
   height: 400px;
   left: 350px;
-  /* height: 45vh;
-  max-height: 150px;
-  min-height: 50px; */
   z-index: 0;
   background-position: center;
 }
@@ -212,7 +209,7 @@ code {
   size: 100px;
 }
 
-.socials:hover {
+#socials:hover {
   position: relative;
   transition: all .2s ease-in-out;
   transform: scale(1.5);
