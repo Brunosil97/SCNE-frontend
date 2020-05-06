@@ -4,6 +4,9 @@ $bg: #3c3c3c;
 $white: #fff;
 $black: #202121;
 
+$sc1: #ff8800;
+$sc2: #ff3300;
+
 @mixin transition($property: all, $duration: 0.5s, $ease: cubic-bezier(0.65,-0.25,0.25, 1.95)) {
   transition: $property $duration $ease;
 }
@@ -81,7 +84,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:	rgb(24,24,24)
-
 }
 
 code {
@@ -126,10 +128,10 @@ code {
   padding: 1rem;
 }
 
-.stream-link:hover {
-  transition: all 0.5s ease-in-out;
-  transform: scale(2);
-}
+// .stream-link:hover {
+//   transition: all 0.5s ease-in-out;
+//   transform: scale(2);
+// }
 
 @font-face {
   font-family: 'Bones';
@@ -209,19 +211,46 @@ code {
   size: 100px;
 }
 
-#socials:hover {
-  position: relative;
-  transition: all .2s ease-in-out;
-  transform: scale(1.5);
+.spotify {
+  color: white;
 }
 
-.spotify {
+.spotify:hover {
   color: green;
+  position: relative;
+  transition: all .5s ease-in-out;
+  transform: scale(2.5);
+}
+
+.soundcloud {
+  color: white;
+}
+
+.soundcloud:hover {
+  color: mix($sc1,$sc2);
+  position: relative;
+  transition: all .5s ease-in-out;
+  transform: scale(2.5);
+}
+
+.youtube {
+  color: white;
+}
+
+.youtube:hover {
+  color: red;
+  transition: all .5s ease-in-out;
+  transform: scale(2.5);
 }
 
 .instagram {
-  background-color: thistle;
-  color: white;
+  color: white; 
+}
+
+.instagram:hover{
+  color: purple;
+  transition: all .5s ease-in-out;
+  transform: scale(2.5);
 }
 
 .navigate-songs {

@@ -18,9 +18,9 @@ const NavBar = (props) => {
                 Music
                 </NavLink>
                 <a href="https://mailchi.mp/518f91bae3d0/scnesignup">Drops</a>
-                <NavLink to="/about" exact>
+                {/* <NavLink to="/about" exact>
                 About
-                </NavLink>
+                </NavLink> */}
                 {signedIn ? <NavLink to="/" onClick={() => {props.signOut()}}exact>
                 SignOut
                 </NavLink> : null} 

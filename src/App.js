@@ -28,7 +28,6 @@ class App extends React.Component {
   handleAuthResponse = (admin) => {
     if (!admin.error) {
       this.signIn(admin)
-      // this.props.history.push("/music")
     }
   }
 
@@ -54,7 +53,7 @@ class App extends React.Component {
       <div className="full-background" >
         <NavBar signOut={this.signOut}/>
         <Route exact path="/" render={(props) => <HomeComponent {...props}/>} />
-        <Route exact path="/about" component={AboutComponent}/>
+        {/* <Route exact path="/about" component={AboutComponent}/> */}
         <Route exact path="/admin_login" render={(props) => <AdminLogin handleAuthResponse={this.handleAuthResponse} {...props}/>}/>
         <Route exact path="/music" render={(props) => <MusicDashboard {...props} signOut={this.signOut}/>}/>
       </div>

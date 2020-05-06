@@ -4,6 +4,8 @@ import { Icon} from '@iconify/react';
 import spotifyIcon from '@iconify/icons-mdi/spotify';
 import soundcloudIcon from '@iconify/icons-logos/soundcloud';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faYoutube, faSpotify, faSoundcloud} from "@fortawesome/free-brands-svg-icons"
 
 
 class MusicCard extends React.Component {
@@ -35,13 +37,12 @@ class MusicCard extends React.Component {
                 </div>
                 <div id="stream-links">
                     <div className="stream-link">
-                    {spotify ? <Icon className="spotify" icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
-                    {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
+                    {spotify ? <FontAwesomeIcon className="spotify" icon={faSpotify} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
+                    {soundcloud ? <FontAwesomeIcon className="soundcloud" icon={faSoundcloud} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null}
                     </div>
-                    {/* {spotify ? <Icon className="spotify" icon={spotifyIcon} name="spotify" onClick={() => this.buttonRedirect("spotify")}/> : null}
-                    {soundcloud ? <Icon className="soundcloud" icon={soundcloudIcon} name="soundcloud" onClick={() => this.buttonRedirect("soundcloud")}/> : null} */}
                 </div>
-                {localStorage.token 
+                {
+                localStorage.token 
                 ? <div id="button-container">
                     <button className="button" onClick={() => this.props.updateStateToEditSong(song)}>Edit</button>
                     <button className="button" onClick={() => this.props.deleteSong(song)}>Delete</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import API from '../API';
-import { Button, Header, Icon, Modal, Form} from 'semantic-ui-react'
+import { Button, Header, Modal, Form} from 'semantic-ui-react'
 
 class EditSongForm extends React.Component {
     state = { 

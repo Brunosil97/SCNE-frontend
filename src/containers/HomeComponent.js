@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../Navbar/Navbar';
 import Iframe from 'react-iframe'
 import recordLogo from '../scne_records_frame.png'
 import { Icon} from '@iconify/react';
@@ -9,6 +8,8 @@ import youtubeIcon from '@iconify/icons-logos/youtube';
 import instagramIcon from '@iconify/icons-logos/instagram-icon';
 import { Button, Divider, Form } from 'semantic-ui-react'
 import API from "../API"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faYoutube, faSpotify, faSoundcloud} from "@fortawesome/free-brands-svg-icons"
 
 class HomeComponent extends React.Component {
 
@@ -32,11 +33,15 @@ class HomeComponent extends React.Component {
         })
     }
     
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        let key = this.state.youtube.split("v=")[1]
+        let link = `https://www.youtube.com/embed/${key}`
+
         let selectedYoutube = {
-            youtube: this.state.youtube
+            youtube: link
         }
         API.patch("contents/1", selectedYoutube).then(this.getContent())
+        event.target.reset()
     }
 
     homeNavigation = (name) => {
@@ -64,7 +69,8 @@ class HomeComponent extends React.Component {
             <main>
                 <div>
                 <img className="camo-logo" src={recordLogo} alt=""/>
-                {localStorage. token ? 
+                {
+                localStorage. token ? 
                 <Form id="youtube-form" onSubmit={this.handleSubmit}>
                     <Form.Group className="inputs" >
                         <Form.Field type="text" control='input' onChange={this.updateYoutubeVid}/>
@@ -76,13 +82,14 @@ class HomeComponent extends React.Component {
                 <div>
                     <div className="contact-links">
                         <div id="socials">
-                        <Icon className="Youtube" icon={youtubeIcon} onClick={() => this.homeNavigation("youtube")}/>
-                        <Icon className="spotify" icon={spotifyIcon} onClick={() => this.homeNavigation("spotify")}/> 
-                        <Icon className="soundcloud" icon={soundcloudIcon} onClick={() => this.homeNavigation("soundcloud")}/> 
-                        <Icon className="instagram" icon={instagramIcon} onClick={() => this.homeNavigation("instagram")}/> 
+                        <FontAwesomeIcon className="youtube" icon={faYoutube} onClick={() => this.homeNavigation("youtube")}/>
+                        <FontAwesomeIcon className="spotify" icon={faSpotify} onClick={() => this.homeNavigation("spotify")}/> 
+                        <FontAwesomeIcon className="soundcloud" icon={faSoundcloud} onClick={() => this.homeNavigation("soundcloud")}/> 
+                        <FontAwesomeIcon className="instagram" icon={faInstagram} onClick={() => this.homeNavigation("instagram")}/> 
                         </div>
                     </div>
-                </div> }
+                </div> 
+                }
                 <Iframe className="video" width="853" height="480" position="relative" 
                 src={this.state.youtube} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></Iframe>
             </div>
