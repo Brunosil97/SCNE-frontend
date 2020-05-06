@@ -1,11 +1,7 @@
 import React from 'react';
 import '../index.scss'
-import { Icon} from '@iconify/react';
-import spotifyIcon from '@iconify/icons-mdi/spotify';
-import soundcloudIcon from '@iconify/icons-logos/soundcloud';
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faYoutube, faSpotify, faSoundcloud} from "@fortawesome/free-brands-svg-icons"
+import {faSpotify, faSoundcloud} from "@fortawesome/free-brands-svg-icons"
 
 
 class MusicCard extends React.Component {

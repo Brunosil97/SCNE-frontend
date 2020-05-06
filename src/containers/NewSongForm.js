@@ -49,9 +49,9 @@ class NewSongForm extends React.Component {
                 <Modal.Content>
                     <Form.Input label="Title:" type="text" name="title" value={title} onChange={this.newSongInState}/>
                     <Form.Input label="Artist:" type="text" name="artist" value={artist} onChange={this.newSongInState}/>
-                    <Form.Input label="Image:" type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}/>
-                    <Form.Input label="Spotify:" type="text" name="spotify" value={spotify ? spotify : ""} onChange={this.newSongInState}/>
-                    <Form.Input label="Soundcloud:" type="text" name="soundcloud" value={soundcloud ? soundcloud : ""} onChange={this.newSongInState}/>
+                    <Form.Input label="Image:" type="file" accept=".png, .jpg, .jpeg" required name="image" onChange={this.newSongInState}/>
+                    <Form.Input label="Spotify:"  name="spotify" value={spotify ? spotify : ""} onChange={this.newSongInState}/>
+                    <Form.Input label="Soundcloud:"  name="soundcloud" value={soundcloud ? soundcloud : ""} onChange={this.newSongInState}/>
                 </Modal.Content>
                 <Modal.Actions>
                 <Button type="submit" color="green" icon="save" content="Save" />

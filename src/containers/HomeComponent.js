@@ -1,11 +1,6 @@
 import React from 'react';
 import Iframe from 'react-iframe'
 import recordLogo from '../scne_records_frame.png'
-import { Icon} from '@iconify/react';
-import spotifyIcon from '@iconify/icons-mdi/spotify';
-import soundcloudIcon from '@iconify/icons-logos/soundcloud';
-import youtubeIcon from '@iconify/icons-logos/youtube';
-import instagramIcon from '@iconify/icons-logos/instagram-icon';
 import { Button, Divider, Form } from 'semantic-ui-react'
 import API from "../API"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
