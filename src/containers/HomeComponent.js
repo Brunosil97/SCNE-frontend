@@ -35,7 +35,7 @@ class HomeComponent extends React.Component {
         let selectedYoutube = {
             youtube: link
         }
-        API.patch("contents/1", selectedYoutube).then(this.getContent())
+        API.patch("contents/1", selectedYoutube).then(() => this.getContent())
         event.target.reset()
     }
 
