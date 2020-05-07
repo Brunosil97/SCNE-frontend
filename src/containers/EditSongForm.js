@@ -8,7 +8,8 @@ class EditSongForm extends React.Component {
         artist: this.props.song.artist,
         image: {},
         spotify: this.props.song.spotify,
-        soundcloud: this.props.song.soundcloud
+        soundcloud: this.props.song.soundcloud,
+        errors: []
      }
 
      newSongInState = event => {
@@ -33,9 +34,16 @@ class EditSongForm extends React.Component {
             soundcloud: soundcloud
         }
         API.patch(`update_song/${this.props.song.id}`, selectedSong)
-        .then(song => {this.props.uploadFile(this.state.image, song.id)})
-        .then(() => this.props.hideEditForm())
+        .then(({song, messages}) => { if (messages) {
+                this.setState({
+                    errors: messages
+                })
+            } else {this.props.uploadFile(this.state.image, song.id)
+                this.props.hideEditForm()
+            }
+        })
     }
+    
 
     render() { 
         const {title, artist, spotify, soundcloud} = this.state
@@ -43,6 +51,13 @@ class EditSongForm extends React.Component {
             <Modal as={Form} open={true} onSubmit={this.EditSubmit} onClose={() => this.props.hideEditForm()} closeIcon>
                   <Header icon='archive' content='Edit Song' size="tiny"/>
                   <Modal.Content>
+                <div className="Errors">
+                    {this.state.errors.length > 0
+                    ? this.state.errors.map((error, index) => (
+                        <h1 key={index}>{error}</h1>
+                        ))
+                    : null}
+                </div>
                     <Form.Input label="Title:" type="text" name="title" value={title} onChange={this.newSongInState}/>
                     <Form.Input label="Artist:" type="text" name="artist" value={artist} onChange={this.newSongInState}/>
                     <Form.Input label="Image:" type="file" accept=".png, .jpg, .jpeg" name="image" onChange={this.newSongInState}/>
