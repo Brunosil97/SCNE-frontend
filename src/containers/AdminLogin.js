@@ -12,7 +12,10 @@ class AdminLogin extends Component {
     handleSubmit = event => {
         event.preventDefault()
         API.signIn(this.state)
-        .then( this.props.handleAuthResponse )
+        .then((admin) => {
+            this.props.handleAuthResponse(admin)
+            this.props.history.push('/music')
+        })
     }
 
     userTyping = (type,event) => {

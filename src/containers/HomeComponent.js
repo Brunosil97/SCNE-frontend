@@ -9,6 +9,7 @@ import { faInstagram, faYoutube, faSpotify, faSoundcloud} from "@fortawesome/fre
 class HomeComponent extends React.Component {
 
     state = {
+        newYoutube: "",
         youtube: ""
     }
 
@@ -24,18 +25,18 @@ class HomeComponent extends React.Component {
     updateYoutubeVid = (event) => {
         event.preventDefault()
         this.setState({
-            youtube: event.target.value
+            newYoutube: event.target.value
         })
     }
     
     handleSubmit = (event) => {
-        let key = this.state.youtube.split("v=")[1]
+        let key = this.state.newYoutube.split("v=")[1]
         let link = `https://www.youtube.com/embed/${key}`
 
         let selectedYoutube = {
             youtube: link
         }
-        API.patch("contents/1", selectedYoutube).then(() => this.getContent())
+        API.patch("contents/1", selectedYoutube).then(this.getContent())
         event.target.reset()
     }
 
